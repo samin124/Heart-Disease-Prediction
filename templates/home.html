@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Heart Disease Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #dcccccdc;
+        }
+
+        .login {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #484646;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .prediction {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            color: #262728;
+            font-size: 20px;
+        }
+        .instructions {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 16px;
+            color: #484646;
+        }
+    </style>
+</head>
+<body>
+    <div class="login">
+        <h1>Heart Disease Prediction</h1>
+        <form method="POST" action="{{ url_for('predict') }}">
+            <input type="text" name="Age" placeholder="Age" required="required"><br>
+            <input type="text" name="Sex" placeholder="Sex" required="required"><br>
+            <input type="text" name="Chest Pain" placeholder="Chest Pain" required="required"><br>
+            <input type="text" name="Rest BP" placeholder="Rest BP" required="required"><br>
+            <input type="text" name="Cholestoral" placeholder="Cholestoral" required="required"><br>
+            <input type="text" name="Fast BS" placeholder="Fast BS" required="required"><br>
+            <input type="text" name="Rest ER" placeholder="Rest ER" required="required"><br>
+            <input type="text" name="Max Heart Rate" placeholder="Max Heart Rate" required="required"><br>
+            <input type="text" name="Angina" placeholder="Angina" required="required"><br>
+            <input type="text" name="Old Peak" placeholder="Old Peak" required="required"><br>
+            <input type="text" name="Slope" placeholder="Slope" required="required"><br>
+            <input type="text" name="Ca" placeholder="Ca" required="required"><br>
+            <input type="text" name="Thal" placeholder="Thal" required="required"><br>
+            <button type="submit">Predict</button>
+        </form>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+    <p class="prediction">{{prediction_text}}</p>
+    {% if instruction %}
+        <p class="instructions">{{ instruction }}</p>
+    {% endif %}
+</body>
+</html>
